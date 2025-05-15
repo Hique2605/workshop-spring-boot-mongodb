@@ -8,9 +8,4 @@ import com.hique2605.workshopmongo.domain.User;
 @Repository
 public interface UserRepository extends MongoRepository<User, String>{
 
-	
-	
-	
-	
-	
 }

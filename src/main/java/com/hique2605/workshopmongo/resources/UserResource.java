@@ -48,5 +48,16 @@ public class UserResource {
 		
 	}
 	
+	
+	@RequestMapping(value="/{id}", method=RequestMethod.DELETE) //ou "@DeleteMapping" funciona igual
+	public ResponseEntity<Void> delete(@PathVariable String id){
+		service.delete(id);
+		return ResponseEntity.noContent().build();	//resposta quando nao devolve nada é 204
+	}	
+	
+	
+	
+	
+	
 
 }
