@@ -55,7 +55,14 @@ public class UserResource {
 		return ResponseEntity.noContent().build();	//resposta quando nao devolve nada é 204
 	}	
 	
-	
+	@RequestMapping(value="/{id}", method=RequestMethod.PUT) //ou "@PutMapping" funciona igual
+	public ResponseEntity<Void> update(@RequestBody UserDTO objDto, @PathVariable String id){
+		User obj = service.fromDTO(objDto);
+		obj.setId(id);
+		obj = service.update(obj);
+		return ResponseEntity.noContent().build();
+		
+	}
 	
 	
 	
