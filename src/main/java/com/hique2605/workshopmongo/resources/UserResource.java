@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.hique2605.workshopmongo.domain.Post;
 import com.hique2605.workshopmongo.domain.User;
 import com.hique2605.workshopmongo.dto.UserDTO;
 import com.hique2605.workshopmongo.services.UserService;
@@ -32,6 +33,7 @@ public class UserResource {
 		return ResponseEntity.ok().body(listDto);
 		
 	}
+	
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.GET) //ou "@GetMappin" funciona igual
 	public ResponseEntity<UserDTO> findById(@PathVariable String id){
@@ -64,7 +66,11 @@ public class UserResource {
 		
 	}
 	
-	
+	@RequestMapping(value="/{id}/posts", method=RequestMethod.GET) //ou "@GetMappin" funciona igual
+	public ResponseEntity<List<Post>> findPosts(@PathVariable String id){
+		User obj = service.findById(id);
+		return ResponseEntity.ok().body(obj.getPosts());
+	}
 	
 
 }
